@@ -133,7 +133,7 @@
                 @endif
     
                 <!-- Back to Homepage Button -->
-                <a href="{{ route('home') }}" class="back-btn">Back to Homepage</a>
+                <a href="{{ route('admin.dashboard') }}" class="back-btn">Back to Homepage</a>
             </div>
         </div>
     </section>

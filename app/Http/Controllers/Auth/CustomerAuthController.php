@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User; // Ensure you have User model for customer
+use App\Models\User;
+use App\Models\Service; 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -52,7 +53,10 @@ class CustomerAuthController extends Controller
     }
     public function dashboard()
     {
-        return view('customer.dashboard'); // Create this view if not already created
+        $user = Auth::user(); // Get the currently authenticated user
+
+        // Return the dashboard view with the user data
+        return view('customer.dashboard', ['user' => $user]);
     }
     
     public function logout()

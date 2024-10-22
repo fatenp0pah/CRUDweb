@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+{{-- 
 <head>
     @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
@@ -14,7 +14,7 @@
             <li><a href="{{ route('services.index') }}">Services</a></li>
         </ul>
     </nav>
-</header>
+</header> --}}
 
 @section('content')
 

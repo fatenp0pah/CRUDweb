@@ -159,7 +159,7 @@
 
             <!-- Back to Homepage Button -->
             <div class="p-4 text-center">
-                <a href="{{ route('home') }}" class="back-btn  hover:bg-primary-1000">Back to Homepage</a>
+                <a href="{{ route('admin.dashboard') }}" class="back-btn  hover:bg-primary-1000">Back to Homepage</a>
             </div>
         </div>
     </div>

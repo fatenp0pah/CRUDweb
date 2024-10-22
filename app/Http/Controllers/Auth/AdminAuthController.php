@@ -38,25 +38,39 @@ class AdminAuthController extends Controller
     }
 
     public function login(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-        ]);
+{
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
 
-        if (Auth::attempt($request->only('email', 'password'))) {
-            // Redirect to the home page after successful login
-            return redirect()->route('home')->with('success', 'Welcome back!');
-        }
-
-        return back()->withErrors(['email' => 'Invalid credentials.']);
-    
+    // Attempt to log the user in
+    if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        // If successful, redirect to the admin dashboard
+        return redirect()->route('admin.dashboard');
     }
+
+    // If unsuccessful, redirect back with an error message
+    return back()->withErrors([
+        'email' => 'The provided credentials do not match our records.',
+    ]);
+}
+public function destroy(Request $request)
+{
+    Auth::logout();
+    return redirect('/'); // Redirect to the desired page after logout
+}
+
+    
+
     public function profile()
     {
         return view('admin.profile'); // This should match the view file you created
     }
-    
+    public function dashboard()
+    {
+        return view('admin.dashboard'); // Points to the admin dashboard view
+    }
     public function logout(Request $request)
     {
         Auth::logout(); // Log out the user

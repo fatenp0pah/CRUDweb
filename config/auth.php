@@ -41,6 +41,11 @@ return [
             'provider' => 'users',
         ],
     ],
+    'admin' => [ // Define the admin guard here
+        'driver' => 'session',
+        'provider' => 'admins', // Ensure this matches the provider defined below
+    ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -64,7 +69,10 @@ return [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
-
+'admins' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\Admin::class, // Ensure you have an Admin model
+    ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
